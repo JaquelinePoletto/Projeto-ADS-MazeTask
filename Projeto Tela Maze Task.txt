@@ -44,6 +44,7 @@ Para saber se o usuário marcou a opção correta, compare o conteúdo da string
 Se o valor estiver correto, pule para a próxima etapa. Se estiver incorreto, emitir uma mensagem de erro.
 
 5 - Na etapa final, a frase montada pelo usuário deverá ser comparada com a string montada durante o processo.
+// jaqueline - ajustar essa frase
 
 6 - Se estiver incorreto, o usuário deverá selecionar novamente a opção correta;
     Se estiver correto, retomar o processo com a próxima frase da lista.
