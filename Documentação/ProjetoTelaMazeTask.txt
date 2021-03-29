@@ -1,12 +1,36 @@
 Disposição da tela do Maze Task: 
 
-Considerando uma frase com sujeito+verbo+predicado
+1 - Opção 1: Usando Matrizes: Será utilizada uma matriz tridimensional, considerando 10 frases:
 
-1 - Montar três listas com palavras ou expressões que possam formar uma frase no formato: sujeito+verbo+predicado
+Frase[10][2][3]
+
+Considerando uma frase com sujeito+verbo+objeto
+
+Frase[0]['certo']['sujeito'] = "a menina"
+Frase[0]['certo']['verbo'] = "comeu" 
+Frase[0]['certo']['objeto'] = "a maçã"
+
+Frase[0]['errado']['sujeito'] = "XXXX"
+Frase[0]['errado']['verbo'] = "rugiu"
+Frase[0]['errado']['objeto'] = "leite"
+
+Frase[1]['certo']['sujeito'] = "eles"
+Frase[1]['certo']['verbo'] = "pularam" 
+Frase[1]['certo']['objeto'] = "corda"
+
+Frase[1]['errado']['sujeito'] = "XXXX"
+Frase[1]['errado']['verbo'] = "caminhou"
+Frase[1]['errado']['objeto'] = "a voz"
+
+Exibir um certo e um errado em cada posição randomicamente.
+
+2 - Opção 2: Usando listas:
+
+2.1 - Montar três listas com palavras ou expressões que possam formar uma frase no formato: sujeito+verbo+objeto
 Ps: As frases acho que a Kelly já disponibilizou no github. Confirmar.
 
 Deverão existir 3 listas para montar as frases corretas. Exemplo:
-sujeito[]    verbo[]          predicado[]
+sujeito[]    verbo[]          objeto[]
 A menina     comeu            maça
 O sorvete    está             gelado
 Nós          assistiremos     ao filme
@@ -35,16 +59,18 @@ Linha 1: sujeito[3]   ou Constante XXXX       -> "Nós" ou "XXXXX"
 Linha 2: verbo[3]     ou OpçãoIncorreta2[3]   -> "assistiremos" ou "fugiu"
 Linha 3: predicado[3] ou OpçãoIncorreta3[3]   -> "ao filme" ou "cinza"
 
-2 - Implementar uma lógica para permitir mudar as opções corretas de lugar.
+2.2 - Implementar uma lógica para permitir mudar as opções corretas de lugar.
 
-3 - A frase correta é obtida concatenando as listas sujeito[] + verbo[] + predicado[]
+2.3 - A frase correta é obtida concatenando as listas sujeito[] + verbo[] + objeto[]
 
-4 - A medida que o usuário selecionar uma opção, montar uma string concatenando os valores selecionados.
+2.4 - A medida que o usuário selecionar uma opção, montar uma string concatenando os valores selecionados.
 Para saber se o usuário marcou a opção correta, compare o conteúdo da string concatenada até o momento com o conteúdo da frase final esperada.
 Se o valor estiver correto, pule para a próxima etapa. Se estiver incorreto, emitir uma mensagem de erro.
 
-5 - Na etapa final, a frase montada pelo usuário deverá ser comparada com a string obtida através da concatenação das listas.
+2.5 - Na etapa final, a frase montada pelo usuário deverá ser comparada com a string montada durante o processo.
 
-6 - Se estiver incorreto, o usuário não poderá avançar na etapa.
+2.6 - Se estiver incorreto, o usuário deverá selecionar novamente a opção correta;
     Se estiver correto, retomar o processo com a próxima frase da lista.
+
+
 
