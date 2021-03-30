@@ -1,10 +1,18 @@
-Disposição da tela do Maze Task: 
+1 - Divisão do desenvolvimento do site MazeTask em tarefas:
 
-1 - Opção 1: Usando Matrizes: Será utilizada uma matriz tridimensional, considerando 10 frases:
+1.1 - A Kelly será a responsável pela montagem das frases utilizadas neste projeto.
+
+1.2 - Montagem da tela:
+
+Considerando uma frase com sujeito+verbo+objeto
+
+Usando Matrizes: Será utilizada uma matriz tridimensional, considerando 10 frases:
 
 Frase[10][2][3]
 
-Considerando uma frase com sujeito+verbo+objeto
+1a. dimensão: Número da linha da frase. No exemplo, consideramos 10 frases
+2a. dimensão: Uma opção certa e uma errada
+3a. dimensão: Divisão da frase em Sujeito, Verbo e Objeto
 
 Frase[0]['certo']['sujeito'] = "a menina"
 Frase[0]['certo']['verbo'] = "comeu" 
@@ -24,53 +32,58 @@ Frase[1]['errado']['objeto'] = "a voz"
 
 Exibir um certo e um errado em cada posição randomicamente.
 
-2 - Opção 2: Usando listas:
+1.3 - Medir o tempo de reação do usuário à pergunta. Considerar o tempo para marcar a opção correta.
 
-2.1 - Montar três listas com palavras ou expressões que possam formar uma frase no formato: sujeito+verbo+objeto
-Ps: As frases acho que a Kelly já disponibilizou no github. Confirmar.
+1.4 - Medir os erros e acertos para melhor calibrar a tarefa labirinto.
+Para calibrar a tarefa labirinto é preciso definir o nível de dificuldade das perguntas em:
+- Fácil
+- Moderado
+- Difícil
 
-Deverão existir 3 listas para montar as frases corretas. Exemplo:
-sujeito[]    verbo[]          objeto[]
-A menina     comeu            maça
-O sorvete    está             gelado
-Nós          assistiremos     ao filme
+Para isso temos duas opções:
 
-Segundo a regra do Maze Task, a primeira linha sempre deverá conter a opção correta junto com um XXXXX
+1.4.1 - Opção 1: Serão criadas três matrizes ao invés de uma única matriz:
 
-Constante  OpçãoIncorreta2[]  OpçaoIncorreta3[]
-XXXXX      Rugiu              Leite
-XXXXX      Voou               redonda 
-XXXXX      fugiu              cinza
+Facil[10][2][3], 
+Moderado[10][2][3], 
+Dificil[10][2][3]
 
-O prograna deverá montar a tela considerando:
+Exemplo de preenchimento:
 
-Frase 1:
-Linha 1: sujeito[1]   ou Constante XXXX       -> "A menina" ou "XXXXX"
-Linha 2: verbo[1]     ou OpçãoIncorreta2[1]   -> "comeu" ou "Rugiu"
-Linha 3: predicado[1] ou OpçãoIncorreta3[1]   -> "maça" ou "Leite"
+Facil[0]['certo']['sujeito'] = "a menina"
+Facil[0]['certo']['verbo'] = "comeu" 
+Facil[0]['certo']['objeto'] = "a maçã"
 
-Frase 2:
-Linha 1: sujeito[2]   ou Constante XXXX       -> "O sorvete" ou "XXXXX"
-Linha 2: verbo[2]     ou OpçãoIncorreta2[2]   -> "está" ou "Voou"
-Linha 3: predicado[2] ou OpçãoIncorreta3[2]   -> "gelado" ou "redonda"
+Facil[0]['errado']['sujeito'] = "XXXX"
+Facil[0]['errado']['verbo'] = "rugiu"
+Facil[0]['errado']['objeto'] = "leite"
 
-Frase 3:
-Linha 1: sujeito[3]   ou Constante XXXX       -> "Nós" ou "XXXXX"
-Linha 2: verbo[3]     ou OpçãoIncorreta2[3]   -> "assistiremos" ou "fugiu"
-Linha 3: predicado[3] ou OpçãoIncorreta3[3]   -> "ao filme" ou "cinza"
+1.4.2 - Opção 2: Acrescentar a quarta dimensão à matriz Frase, informando nela o nível de dificuldade:
 
-2.2 - Implementar uma lógica para permitir mudar as opções corretas de lugar.
+Frase[10][3][2][3]
+1a. dimensão: Número da linha da frase. No exemplo, consideramos 10 frases.
+2a. dimensão: Nível de dificuldade: Fácil/Moderado/Difícil
+3a. dimensão: Uma opção certa e uma errada
+4a. dimensão: Divisão da frase entre Sujeito, Verbo e Objeto
 
-2.3 - A frase correta é obtida concatenando as listas sujeito[] + verbo[] + objeto[]
+Frase[0]['facil']['certo']['sujeito'] = "a menina"
+Frase[0]['facil']['certo']['verbo'] = "comeu" 
+Frase[0]['facil']['certo']['objeto'] = "a maçã"
 
-2.4 - A medida que o usuário selecionar uma opção, montar uma string concatenando os valores selecionados.
-Para saber se o usuário marcou a opção correta, compare o conteúdo da string concatenada até o momento com o conteúdo da frase final esperada.
-Se o valor estiver correto, pule para a próxima etapa. Se estiver incorreto, emitir uma mensagem de erro.
+Frase[0]['moderado']['certo']['sujeito'] = "a menina"
+Frase[0]['moderado']['certo']['verbo'] = "comera" 
+Frase[0]['moderado']['certo']['objeto'] = "a maçã"
 
-2.5 - Na etapa final, a frase montada pelo usuário deverá ser comparada com a string montada durante o processo.
+Frase[0]['dificil']['certo']['sujeito'] = "A menina"
+Frase[0]['dificil']['certo']['verbo'] = "comeria" 
+Frase[0]['dificil']['certo']['objeto'] = "a maçã"
 
-2.6 - Se estiver incorreto, o usuário deverá selecionar novamente a opção correta;
-    Se estiver correto, retomar o processo com a próxima frase da lista.
+1.5 - Pendência:
+
+De acordo com o tempo de reação do usuário à pergunta anterior, será selecionada a próxima frase a ser exibida.
+Essa parte está vaga, pois não sabemos qual será o tempo ideal de resposta para que o usuário possa progredir de nível.
+Talvez o nível tenha que ser escolhido antes do usuário iniciar o Mazetask.
+
 
 
 
